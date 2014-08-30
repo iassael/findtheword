@@ -9,10 +9,11 @@ import java.io.InputStreamReader;
 public class Main {
 
 	// Word Length
-	static int num_letters = 9;
+	static int num_letters = 11;
 	// Word Letters
-	static String letters = "δολειολαα";
+	static String letters = "πακνισοταπα";
 
+	// Constants
 	static String[] vowel = { "ά", "έ", "ή", "ί", "ό", "ύ", "ώ", "ς" };
 	static String[] vowel_replace = { "α", "ε", "η", "ι", "ο", "υ", "ω", "σ" };
 
@@ -31,14 +32,16 @@ public class Main {
 			int results = 0;
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
+				
+				// If same word length
 				if (strLine.length() == num_letters) {
-					for (int v = 0; v < vowel.length; v++) {
+
+					// Replace greek tonous
+					for (int v = 0; v < vowel.length; v++)
 						strLine = strLine.toLowerCase().replaceAll(vowel[v],
 								vowel_replace[v]);
-					}
 
 					boolean[] usedLetters = new boolean[letters.length()];
-
 					char[] charArr = strLine.toCharArray();
 					int counter = 0;
 
@@ -59,7 +62,7 @@ public class Main {
 					}
 				}
 			}
-			System.out.println("Search ended with "+results+" results");
+			System.out.println("Search ended with " + results + " results");
 
 			// Close the input stream
 			br.close();
